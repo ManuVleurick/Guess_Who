@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Who Am I? — Historical Character</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+  <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet"> # goofy ah
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>Who Am I? — Historical Chat Game</h1>
+      <div class="controls">
+        <div id="scoreBox">Score: 0</div>
+        <button id="newGame">New Game</button>
+      </div>
+    </header>
+
+    <div class="game">
+      <!-- LEFT: Explanation column -->
+      <aside class="left-info">
+        <h2>Explanation</h2>
+        <p id="explanationText">
+          Message = 1 </br>
+          Guess = 3
+        </p>
+      </aside>
+
+      <!--Center - Chat  -->
+      <section class="card chat" aria-label="Chat area">
+        <div class="messages" id="messages" role="log" aria-live="polite"></div>
+
+        <div class="composer">
+          <input id="input" type="text" placeholder="Say something to the persona... (or make a guess)" autocomplete="off">
+          <input id="guess" type="text" placeholder="Your guess" class="small">
+          <button id="send">Send</button>
+          <button id="tryGuess">Guess</button>
+        </div>
+      </section>
+
+      <!-- RIGHT: Counter -->
+      <aside class="right-info">
+        <h2>Guesses Left</h2>
+        <div id="counter" class="counterBox">15</div>
+      </aside>
+    </div>
+
+    <footer>Demo</footer>
+
+    <div id="celebration" class="hidden">
+    <div class="popup">
+      <h2>🎉 Correct! 🎉</h2>
+      <p>You guessed right!</p>
+      <button id="celebrationNewGame">Start New Game</button>
+    </div>
+    </div>
+
+    <div id="gameOver" class="hidden">
+    <div class="popup">
+      <h2>💀 Game Over 💀</h2>
+      <p>You ran out of messages!</p>
+      <button id="gameOverNewGame">Start New Game</button>
+    </div>
+    </div>
+
+  </div>
+  <script src="{{ url_for('static', filename='js/index.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,113 @@
+:root{--bg:#0f1724;--card:#0b1220;--muted:#9aa6bf;--accent:#6ee7b7;--bubble:#0b1722}
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;font-family:Inter,system-ui,Arial,Helvetica,sans-serif;background:linear-gradient(180deg,#071021 0%, #0e2233 100%);color:#e6eef6}
+    .wrap{max-width:960px;margin:28px auto;padding:20px}
+    header{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+    h1{font-size:20px;margin:0}
+    .controls{display:flex;gap:8px;align-items:center}
+    button{background:var(--accent);color:#04211a;border:0;padding:8px 12px;border-radius:10px;font-weight:600;cursor:pointer}
+    button.ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted)}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:14px;padding:14px;box-shadow:0 6px 30px rgba(2,6,23,0.6)}
+
+#scoreBox {
+  font-family: 'Comic Neue', cursive;
+  font-size: 0.9rem;
+  color: #fff;
+  background: rgba(0,0,0,0.3);
+  padding: 4px 8px;
+  border-radius: 6px;
+  border: 1px solid #6ee7b7;
+}
+
+
+    .game {
+  display: grid;
+  grid-template-columns: 200px 1fr 200px;
+  gap: 20px;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.left-info, .right-info {
+  background: linear-gradient(220deg,  #273235  , #0083b0);
+  padding: 15px;
+  border-radius: 10px;
+}
+
+.left-info {
+  padding: 20px;       /* optional – makes text breathe */
+  box-sizing: border-box;
+}
+
+.counterBox {
+  font-size: 3rem;
+  text-align: center;
+  padding: 20px;
+  background: #0083b0;
+  border-radius: 15px;
+  border: 2px solid #ccc;
+}
+
+    .chat{height:64vh;display:flex;flex-direction:column}
+    .messages{flex:1;overflow:auto;padding:12px;gap:10px;display:flex;flex-direction:column}
+    .msg{max-width:72%;padding:10px 12px;border-radius:12px;line-height:1.35}
+    .msg.ai{align-self:flex-start;background:rgba(159, 23, 23, 0.75);border:1px solid rgba(255,255,255,0.02)}
+    .msg.user{align-self:flex-end;background:linear-gradient(220deg,  #00b4db  , #0083b0);color:#ffffff}
+    .meta{font-size:12px;color:var(--muted);margin-top:6px}
+
+    .composer{display:flex;gap:8px;padding-top:10px}
+    .composer input[type=text]{flex:1;padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit}
+    .composer .small{width:110px}
+
+    aside{min-height:64vh}
+    .panel{padding:12px;display:flex;flex-direction:column;gap:12px}
+    label{font-size:13px;color:var(--muted)}
+    .note{font-size:13px;color:var(--muted);background:rgba(255,255,255,0.02);padding:8px;border-radius:8px}
+    .hint{font-weight:700;color:var(--accent)}
+    footer{margin-top:12px;font-size:13px;color:var(--muted);text-align:center}
+
+    @media (max-width:880px){.game{grid-template-columns:1fr;}.composer .small{display:none}}
+
+#gameOver, #celebration {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.6);
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  display: none; /* default: hidden */
+}
+
+#gameOver:not(.hidden),
+#celebration:not(.hidden) {
+  display: flex; /* only show when .hidden is removed */
+}
+
+
+#gameOver .popup,
+#celebration .popup {
+  background: rgb(158, 0, 0);
+  padding: 2rem;
+  border-radius: 15px;
+  text-align: center;
+  max-width: 350px;
+}
+
+/* movement for score */
+@keyframes bounce {
+  0%   { transform: scale(1); }
+  25%  { transform: scale(1.3); }
+  50%  { transform: scale(0.9); }
+  75%  { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+
+.bounce {
+  animation: bounce 0.5s ease;
+}
+
+#celebration .popup, #gameOver .popup {
+  transform-origin: center;
+}
